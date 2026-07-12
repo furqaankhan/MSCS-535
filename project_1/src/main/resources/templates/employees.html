@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee search | Secure Employee Directory</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}" href="/css/app.css">
+</head>
+<body>
+<header class="site-header">
+    <div>
+        <p class="eyebrow">Company internal system</p>
+        <h1>Employee directory</h1>
+    </div>
+    <form th:action="@{/logout}" method="post"><button class="secondary" type="submit">Sign out</button></form>
+</header>
+<main class="content">
+    <section class="card">
+        <h2>Search records</h2>
+        <p>Search by employee name, number, or department.</p>
+        <form class="search-form" th:action="@{/employees}" th:object="${search}" method="get">
+            <label for="query">Search term</label>
+            <div class="search-row">
+                <input id="query" th:field="*{query}" type="search" minlength="2" maxlength="50" required>
+                <button type="submit">Search</button>
+            </div>
+            <p class="error" th:if="${#fields.hasErrors('query')}" th:errors="*{query}">Invalid search term.</p>
+        </form>
+    </section>
+    <section class="results" th:if="${searched}">
+        <h2>Results</h2>
+        <p th:if="${#lists.isEmpty(employees)}">No matching employees were found.</p>
+        <div class="table-wrap" th:unless="${#lists.isEmpty(employees)}">
+            <table>
+                <thead><tr><th>Employee</th><th>Number</th><th>Department</th><th>Email</th></tr></thead>
+                <tbody>
+                <tr th:each="employee : ${employees}">
+                    <td th:text="${employee.fullName}">Name</td>
+                    <td th:text="${employee.employeeNumber}">Number</td>
+                    <td th:text="${employee.department}">Department</td>
+                    <td th:text="${employee.email}">Email</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+</body>
+</html>

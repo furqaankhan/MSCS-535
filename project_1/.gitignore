@@ -1,0 +1,9 @@
+target/
+.env
+certs/
+*.p12
+*.jks
+.DS_Store
+.idea/
+*.iml
+.vscode/

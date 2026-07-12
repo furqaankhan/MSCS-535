@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Request error | Secure Employee Directory</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}" href="/css/app.css">
+</head>
+<body class="login-page">
+<main class="card login-card">
+    <p class="eyebrow">Secure Employee Directory</p>
+    <h1>Request not completed</h1>
+    <p th:text="${message ?: 'The request could not be completed.'}">The request could not be completed.</p>
+    <a href="/">Return to the application</a>
+</main>
+</body>
+</html>

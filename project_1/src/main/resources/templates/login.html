@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in | Secure Employee Directory</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}" href="/css/app.css">
+</head>
+<body class="login-page">
+<main class="card login-card">
+    <p class="eyebrow">MSCS-535 Secure Directory</p>
+    <h1>Sign in</h1>
+    <p class="security-warning"><strong>Phishing warning:</strong> The IT department will never request your password through email.</p>
+    <p class="error" th:if="${param.error}">Sign-in failed. Check your credentials or try again later.</p>
+    <p class="success" th:if="${param.logout}">You have signed out safely.</p>
+    <form th:action="@{/login}" method="post">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" maxlength="50" required autofocus>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" maxlength="128" required>
+        <button type="submit">Sign in securely</button>
+    </form>
+</main>
+</body>
+</html>

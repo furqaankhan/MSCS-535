@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:secure_directory;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password: ""
+    driver-class-name: org.h2.Driver
+  sql:
+    init:
+      mode: always
+  thymeleaf:
+    cache: false
+
+server:
+  port: 8443
+  ssl:
+    enabled: false
+  servlet:
+    session:
+      cookie:
+        secure: true
+        http-only: true
+        same-site: strict
+  error:
+    include-message: never
+    include-stacktrace: never
+
+app:
+  http-port: 8080
